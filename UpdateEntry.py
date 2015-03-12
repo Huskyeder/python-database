@@ -1,20 +1,20 @@
 from User import User
-import DaoSqliteImpl as dao
+from DaoSqliteImpl import  Dao
 
 def doSomething():
-    global dao
+    dao = Dao()
     userId = raw_input("Enter the employee id to update: ")
-    user = findUserById(userId)
+    user = findUserById(dao,userId)
     if (user is None):
         print "User was not found"
     else:
         dao.printUser(userId)
-        updateUser(user)
+        updateUser(dao,user)
 
-def findUserById(userId):
+def findUserById(dao,userId):
     return dao.findUserById(userId)
 
-def updateUser(user):
+def updateUser(dao,user):
     changes = False;
     newPhone = raw_input("Enter new phone. Leave blank if no changes:")
     newName = raw_input("Enter new Name. Leave blank if no changes: ")

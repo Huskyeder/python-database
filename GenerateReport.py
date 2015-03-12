@@ -1,10 +1,11 @@
 import xml.etree.cElementTree as ET
-import DaoSqliteImpl as dao
+from DaoSqliteImpl import Dao
 from PropertiesReader import PropertiesReader
 from datetime import datetime
 import os
 
 def printXml():
+    dao = Dao()
     properties = PropertiesReader()
     userList = dao.getUsers()
     root = ET.Element("xml")
